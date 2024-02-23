@@ -57,9 +57,16 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<mainClass>com.example.App3Application</mainClass> <!-- Adjust the package and class name accordingly -->
-					<layout>JAR</layout>
+					<mainClass>com.example.App3Application</mainClass>
 				</configuration>
+				<version>${spring-boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
 		</plugins>
 	</build>
