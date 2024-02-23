@@ -1,15 +1,20 @@
-#
-# Build stage
-#
-FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
-RUN mvn clean package -DskipTests
 
-#
-# Package stage
-#
-FROM openjdk:17-jdk-slim
-COPY --from=build /target/App3-0.0.1-SNAPSHOT.jar App3.jar
-# ENV PORT=8080
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","App3.jar"]
+FROM eclipse-temurin:17.0.5_8-jre-focal as builder
+WORKDIR extracted
+ADD ./target/*.jar app.jar
+RUN java -Djarmode=layertools -jar app.jar extract
+
+FROM eclipse-temurin:17.0.5_8-jre-focal
+WORKDIR application
+COPY --from=builder extracted/dependencies/ ./
+COPY --from=builder extracted/spring-boot-looder/ ./
+COPY --from=builder extracted/snapshot-dependencies/ ./
+COPY --from=builder extracted/application/ ./
+
+EXPOSE 8085
+
+#use it before springboot 3.2
+#ENTRYPOINT ["java" , "org.springframework.boot.loader.JarLauncher"]
+#use it for after springboot 3.2
+
+ENTRYPOINT ["java" , "org.springframework.boot.loader.launch.JarLauncher"]
