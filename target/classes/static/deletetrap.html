@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Javascript REST client</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js">
+</script>
+</head>
+<body>
+
+<form action="#" id="deletetrap">
+   <h3> Specify the trap to delete </h3>
+    
+   id: <input type="text" name="trapid" id="trapid"> 
+
+   <input type="submit"> 
+</form>
+
+<script type="text/javascript">
+	$('#deletetrap').submit(function(event){
+		var urlrest = 'snmptrap/'+$('#trapid').val();
+		$.ajax({
+			url: urlrest,
+			type: 'DELETE',
+			contentType: "application/json",
+			success: function(){
+				alert ("The trap has been deleted");
+			},
+			error: function(){alert ("There has been an error");}
+		});
+		event.preventDefault(); 
+	})
+</script>
+</body>
+</html>

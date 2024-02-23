@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>New Trap</title>
+</head>
+<body style=" background-color:#f2f2f2; padding-top:200px;">
+    <div align="center">
+        <h1 style="font-size:19px;"><b>HERE THE ADMINISTRATOR CAN SEARCH FOR THE IP ADDRESS <br/> OF THE TRAP IN THE DATABASE. '127.0.0.1', '127.0.0.5'</b></h1>
+        <br/>
+        <form action="new/{ipaddress}" method="GET">
+        	<p><b style="font-size:20px;">ipaddress: </b><input style="padding:20px;" type="text" id="ipaddress" name="ipaddress"/></p>
+        	<p><input style="padding:10px; background-color:#d2042d; border-radius:5px; margin-right:10px; color:white;" type="submit" value="Submit"/><input type="reset" style="padding:10px; background-color:#d2042d; border-radius:5px; color:white;" value="Reset"/></p>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Traps Manager Application</title>
+  <style>
+    body{
+    	background-color:#eee;
+    	}
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    	min-height:700px;
+}
+
+  
+    </style>
+</head>
+<body>
+<div class="">
+<div align="center">
+    <h1>Traps Records</h1>
+    <a style="font-weight:bold; color:#d2042d" href="/new">Search Trap</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Trap</th>
+                <th>Received time</th>
+                <th>Sender agent</th>
+                <th>Trap PDU</th>
+            </tr>
+        </thead>
+        <tbody style="font-weight:bold;">
+            <tr th:each="trapDTO  :${listTrap}">
+                <td th:text="${trapDTO.ID}"></td>
+                <td th:text="${trapDTO.time}"></td>
+                <td th:text="${trapDTO.ipaddress}"></td>
+                <td th:text="${trapDTO.PDU}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
+</div>
+</body>
+</html>
