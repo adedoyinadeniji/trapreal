@@ -58,6 +58,7 @@
 				<version>3.0.0</version>
 				<configuration>
 					<mainClass>com.example.App3Application</mainClass> <!-- Adjust the package and class name accordingly -->
+					<layout>LAYERED_JAR</layout>
 				</configuration>
 			</plugin>
 		</plugins>
